@@ -18,11 +18,16 @@
       margin: 0 auto;
       text-align: center;
     }
+    .shop > h1 {
+      font-size: 20px;
+      margin: 0 0 20px;
+    }
     .product {
       padding: 24px;
       border: 1px solid #e5e5e5;
       border-radius: 14px;
       background: #fff;
+      margin-bottom: 16px;
     }
     .product h2 {
       margin: 0 0 8px;
@@ -34,28 +39,76 @@
     }
     .cart {
       margin-top: 18px;
+      text-align: center;
     }
   </style>
 </head>
 <body>
   <div class="shop">
-    <div class="product">
-      <h2>Rebeccac_831's shop</h2>
-      <p>Han photocard - like new</p>
+    <h1>Rebeccac_831's shop</h1>
 
-      <paypal-add-to-cart-button data-id="QD53TWHWHACZJ"></paypal-add-to-cart-button>
+    <!-- Products render here automatically -->
+    <div id="product-list"></div>
+
+    <!-- One shared cart button for the whole shop -->
+    <div class="cart">
+      <paypal-cart-button data-id="pp-view-cart"></paypal-cart-button>
       <script>
-        cartPaypal.AddToCart({ id: "QD53TWHWHACZJ" })
+        cartPaypal.Cart({ id: "pp-view-cart" });
       </script>
-
-      <div class="cart">
-        <paypal-cart-button data-id="pp-view-cart"></paypal-cart-button>
-        <script>
-          cartPaypal.Cart({ id: "pp-view-cart" })
-        </script>
-      </div>
-
     </div>
   </div>
+
+  <script>
+    // ADD NEW PRODUCTS HERE — just add one object per product, nothing else to touch.
+    const products = [
+      {
+        name: "Han photocard - like new",
+        description: "",
+        id: "QD53TWHWHACZJ"
+      },
+      {
+        name: "Lee Know Photocard",
+        description: "",
+        id: "MV9R884EBSHA6"
+      },
+      {
+        name: "Foxiy Dominate Japan Skzoo",
+        description: "",
+        id: "DYKR7ZSV2QJZY"
+      }
+      // {
+      //   name: "Next product name",
+      //   description: "",
+      //   id: "PASTE_ID_HERE"
+      // },
+    ];
+
+    const container = document.getElementById("product-list");
+
+    // Check the URL for ?id=PRODUCT_ID — if present, show only that product.
+    // e.g. yoursite.com/paypal-shop.html?id=MV9R884EBSHA6
+    const params = new URLSearchParams(window.location.search);
+    const requestedId = params.get("id");
+
+    const productsToShow = requestedId
+      ? products.filter(p => p.id === requestedId)
+      : products;
+
+    productsToShow.forEach((product) => {
+      // Build the product card markup
+      const card = document.createElement("div");
+      card.className = "product";
+      card.innerHTML = `
+        <h2>${product.name}</h2>
+        ${product.description ? `<p>${product.description}</p>` : ""}
+        <paypal-add-to-cart-button data-id="${product.id}"></paypal-add-to-cart-button>
+      `;
+      container.appendChild(card);
+
+      // Register the button with PayPal's cart script (same pattern as your original code)
+      cartPaypal.AddToCart({ id: product.id });
+    });
+  </script>
 </body>
 </html>
