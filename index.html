@@ -49,6 +49,10 @@
       padding: 10px 16px;
       box-shadow: 0 4px 10px rgba(0,0,0,0.15);
     }
+    /* 🚫 Hide PayPal's empty or broken image placeholders */
+    img[src=""], img:not([src]), img[src*="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP"] {
+      display: none !important;
+    }
   </style>
 </head>
 <body>
@@ -56,7 +60,7 @@
     <div class="product">
       <h2>Rebeccac_831's shop</h2>
       <p>Han photocard</p>
-      <img src="https://file.notion.com/f/f/d0356d9e-dbea-4635-bd85-e01d1738157f/ce479145-e3e3-451b-9e48-66fae65f90b7/WhatsApp_Image_2026-08-10_at_22.41.51.jpeg?table=block&id=3cc4c091-09b0-807f-9958-f97e564fb028&spaceId=d0356d9e-dbea-4635-bd85-e01d1738157f&expirationTimestamp=1788220800000&signature=ytERreTuv6LSNzYXe-RVjcutq8OfK35du84-HV41Uzc&downloadName=WhatsApp+Image+2026-08-10+at+22.41.51.jpeg">
+      <img src="https://file.notion.com/f/f/d0356d9e-dbea-4635-bd85-e01d1738157f/ce479145-e3e3-451b-9e48-66fae65f90b7/WhatsApp_Image_2026-08-10_at_22.41.51.jpeg?table=block&id=3cc4c091-09b0-807f-9958-f97e564fb028&spaceId=d0356d9e-dbea-4635-bd85-e01d1738157f&expirationTimestamp=1788220800000&signature=ytERreTuv6LSNzYXe-RVjcutq8OfK35du84-HV41Uzc&downloadName=WhatsApp+Image+2026-08-10+at+22.41.51.jpeg" alt="Han photocard">
       <paypal-add-to-cart-button data-id="QD53TWHWHACZJ"></paypal-add-to-cart-button>
       <script>cartPaypal.AddToCart({ id: "QD53TWHWHACZJ" })</script>
     </div>
