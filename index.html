@@ -8,32 +8,52 @@
   <style>
     body {
       margin: 0;
-      padding: 24px;
+      padding: 0;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       background: transparent;
       color: #222;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
     }
+
     .shop {
-      max-width: 520px;
-      margin: 0 auto;
+      width: 360px;
       text-align: center;
-    }
-    .product {
-      padding: 24px;
-      border: 1px solid #e5e5e5;
-      border-radius: 14px;
       background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      padding: 20px;
     }
+
+    .product img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+      margin-bottom: 12px;
+    }
+
     .product h2 {
-      margin: 0 0 8px;
-      font-size: 22px;
+      font-size: 20px;
+      margin-bottom: 4px;
     }
+
     .product p {
-      margin: 0 0 20px;
       color: #666;
+      margin-bottom: 16px;
     }
+
     .cart {
-      margin-top: 18px;
+      margin-top: 12px;
+    }
+
+    @media (max-height: 700px) {
+      body {
+        align-items: flex-start;
+        padding-top: 20px;
+      }
     }
   </style>
 </head>
@@ -42,7 +62,11 @@
     <div class="product">
       <h2>Rebeccac_831's shop</h2>
       <p>Han photocard/details.</p>
-
+      <img 
+        src="https://file.notion.com/f/f/d0356d9e-dbea-4635-bd85-e01d1738157f/ce479145-e3e3-451b-9e48-66fae65f90b7/WhatsApp_Image_2026-08-10_at_22.41.51.jpeg?table=block&id=3cc4c091-09b0-807f-9958-f97e564fb028&spaceId=d0356d9e-dbea-4635-bd85-e01d1738157f&expirationTimestamp=1788220800000&signature=ytERreTuv6LSNzYXe-RVjcutq8OfK35du84-HV41Uzc&downloadName=WhatsApp+Image+2026-08-10+at+22.41.51.jpeg"
+        alt="Han photocard"
+        style="width:100%; border-radius:12px;"
+      >
       <paypal-add-to-cart-button data-id="QD53TWHWHACZJ"></paypal-add-to-cart-button>
       <script>
         cartPaypal.AddToCart({ id: "QD53TWHWHACZJ" })
