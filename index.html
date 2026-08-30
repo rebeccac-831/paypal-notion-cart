@@ -44,8 +44,12 @@
       margin-top: 16px;
     }
 
-    /* ⭐ Hide ONLY PayPal’s injected fallback image (mobile blue question mark) */
-    paypal-add-to-cart-button img {
+    /* ✅ Hide PayPal’s injected empty/fallback image everywhere */
+    paypal-add-to-cart-button img[src=""],
+    paypal-add-to-cart-button img:not([src]),
+    paypal-add-to-cart-button img[src*="data:image/gif;base64"],
+    paypal-add-to-cart-button img[src^="blob:"],
+    paypal-add-to-cart-button img[src^="about:blank"] {
       display: none !important;
     }
   </style>
