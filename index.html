@@ -44,16 +44,19 @@
       margin-top: 16px;
     }
 
-    /* ✅ Hide all empty or fallback images injected by PayPal or iOS preview */
-    paypal-add-to-cart-button img[src=""],
-    paypal-add-to-cart-button img:not([src]),
-    paypal-add-to-cart-button img[src^="data:"],
-    paypal-add-to-cart-button img[src^="blob:"],
-    paypal-add-to-cart-button img[src^="about:blank"],
-    paypal-add-to-cart-button img[src*="base64"],
+    /* ✅ Hide all empty or invalid image elements (Safari mobile fix) */
+    img[src=""],
+    img:not([src]),
+    img[src^="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP"],
     img[src^="about:blank"],
-    img[src^="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP"] {
+    img[src^="blob:"],
+    img[src^="data:"],
+    img[src^="file:"],
+    paypal-add-to-cart-button img {
       display: none !important;
+      visibility: hidden !important;
+      width: 0 !important;
+      height: 0 !important;
     }
   </style>
 </head>
