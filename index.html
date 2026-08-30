@@ -44,12 +44,15 @@
       margin-top: 16px;
     }
 
-    /* ✅ Hide PayPal’s injected empty/fallback image everywhere */
+    /* ✅ Hide all empty or fallback images injected by PayPal or iOS preview */
     paypal-add-to-cart-button img[src=""],
     paypal-add-to-cart-button img:not([src]),
-    paypal-add-to-cart-button img[src*="data:image/gif;base64"],
+    paypal-add-to-cart-button img[src^="data:"],
     paypal-add-to-cart-button img[src^="blob:"],
-    paypal-add-to-cart-button img[src^="about:blank"] {
+    paypal-add-to-cart-button img[src^="about:blank"],
+    paypal-add-to-cart-button img[src*="base64"],
+    img[src^="about:blank"],
+    img[src^="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP"] {
       display: none !important;
     }
   </style>
